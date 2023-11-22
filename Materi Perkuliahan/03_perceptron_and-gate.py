@@ -54,10 +54,15 @@ for j in range(epochs):
         w[1] += delta * learning_rate * x2
         w[2] += delta * learning_rate * bias
 
-    print('-' * 20)
+    print('-' * 37)
 
     if global_delta == 0:
         break
 
 print("Final Weights:", w)
+
+# %%
+print('weight of x1   :', w[0])
+print('weight of x2   :', w[1])
+print('weight of bias :', w[2])
 # %%
