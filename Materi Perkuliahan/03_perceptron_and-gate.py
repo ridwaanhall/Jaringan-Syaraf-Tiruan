@@ -4,10 +4,10 @@ import numpy as np
 # %%
 # AND Gate
 features = np.array([
-    [-1, -1, 1],
-    [-1, 1, 1],
-    [1, -1, 1],
-    [1, 1, 1]
+    [-1, -1],
+    [-1, 1],
+    [1, -1],
+    [1, 1]
 ])
 
 # %%
@@ -20,9 +20,11 @@ labels = np.array([
 ])
 
 # %%
-w = [0.6, 0.2, -0.9]  # Including bias term
+# Initialize weights (including bias term)
+w = [0.6, 0.2, -0.9]  # x1, x2, bias
 learning_rate = 0.5  # Set the learning rate to 0.5 (also called alpha)
-epochs = 10
+epochs        = 10
+bias          = 1
 
 # %%
 for j in range(epochs):
@@ -33,11 +35,11 @@ for j in range(epochs):
         actual = labels[i]
         instance = features[i]
 
-        x0 = instance[0]
-        x1 = instance[1]
-        bias = instance[2]
+        x1 = instance[0]
+        x2 = instance[1]
+        #bias = instance[2]
 
-        sum_unit = (w[0] * x0) + (w[1] * x1) + (w[2] * bias)
+        sum_unit = (w[0] * x1) + (w[1] * x2) + (w[2] * bias)
 
         if sum_unit > 0:
             prediction = 1
@@ -48,8 +50,8 @@ for j in range(epochs):
         global_delta += abs(delta)
 
         print(f'Prediction: {prediction} (Target: {actual}), Error: {delta}')
-        w[0] += delta * learning_rate * x0
-        w[1] += delta * learning_rate * x1
+        w[0] += delta * learning_rate * x1
+        w[1] += delta * learning_rate * x2
         w[2] += delta * learning_rate * bias
 
     print('-' * 20)
