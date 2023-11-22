@@ -21,7 +21,7 @@ labels = np.array([
 
 # %%
 w = [0.6, 0.2, -0.9]  # Including bias term
-learning_rate = 0.5  # Set the learning rate to 0.5
+learning_rate = 0.5  # Set the learning rate to 0.5 (also called alpha)
 epochs = 10
 
 # %%
